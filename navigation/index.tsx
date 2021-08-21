@@ -41,9 +41,9 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="MovieDetailsScrean" component={MovieDetailsScreen} options={{ 
-        title: 'Details Movie'
-       }} />
+      <Stack.Screen name="MovieDetailsScrean" component={MovieDetailsScreen} options={{
+        title: ''
+      }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -69,7 +69,7 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="Home"
-        component={MovieDetailsScreen}
+        component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
@@ -83,7 +83,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color={color} />,
         }}
       />
-         <BottomTab.Screen
+      <BottomTab.Screen
         name="Search"
         component={TabTwoScreen}
         options={{
@@ -91,7 +91,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
         }}
       />
-         <BottomTab.Screen
+      <BottomTab.Screen
         name="Downloads"
         component={TabTwoScreen}
         options={{
