@@ -37,3 +37,12 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export interface Episode {
+  id: string,
+  title: string,
+  poster: string,
+  duration: string,
+  plot: string,
+  video: string,
+}

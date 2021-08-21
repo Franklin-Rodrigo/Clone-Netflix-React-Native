@@ -9,6 +9,7 @@ import { Pressable } from 'react-native';
 import EpisodeItem from '../../components/EpisodeItem';
 import { FlatList } from 'react-native'
 import { useState } from 'react';
+import VideoPlayer from '../../components/VideoPlayer';
 
 interface Movies {
     id: string,
@@ -44,16 +45,21 @@ const MovieDetailsScreen: React.FC = () => {
     const fisrtSeason = movie.seasons.items[0]
     const [currentSeason, setCurrentSeason] = useState(fisrtSeason)
     const fisrtEpisode = fisrtSeason.episodes.items[0]
-
+    const [currentEpisode, setcurrentEpisode] = useState(fisrtEpisode)
 
     const seasonsName = movie.seasons.items.map(season => season.name)
     return (
         <View style={{ flex: 1 }}>
-            <Image style={styles.img} source={{ uri: fisrtEpisode.poster }} />
+            <VideoPlayer episode={currentEpisode} />
             <FlatList
                 data={currentSeason.episodes.items}
-                renderItem={({ item }) => <EpisodeItem props={item} />}
+                renderItem={({ item }) => (
+                    <EpisodeItem props={item}
+                        onPress={setcurrentEpisode}
+                    />
+                )}
                 // style={{ marginBottom: 250 }}
+
                 ListHeaderComponent={(
                     <View style={{ padding: 12 }}>
                         <Text style={styles.title}>{movie.title}</Text>
@@ -106,7 +112,8 @@ const MovieDetailsScreen: React.FC = () => {
                             onValueChange={(itemValue, itemIndex) => {
                                 setCurrentSeason(movie.seasons.items[itemIndex])
                             }}
-                            style={{ color: 'white', backgroundColor: 'black', padding: 5, marginTop: 5, width: '30%', borderColor: 'black' }}
+                            style={{ color: 'white', backgroundColor: 'black', padding: 5, marginTop: 5, width: 130, borderColor: 'black' }}
+                            dropdownIconColor={'white'}
                         >
                             {seasonsName.map(seasonName => (
                                 <Picker.Item label={seasonName} value={seasonName} key={seasonName} />

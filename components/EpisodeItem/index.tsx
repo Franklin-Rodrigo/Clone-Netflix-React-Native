@@ -1,22 +1,17 @@
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
+import { Episode } from '../../types';
 
 import styles from './styles';
 interface Props {
-    props: Item
+    props: Episode
+    onPress: (episode: Episode) => void
 }
-interface Item {
-    id: string,
-    title: string,
-    poster: string,
-    duration: string,
-    plot: string,
-    video: string,
-}
-const EpisodeItem = ({ props }: Props) => {
+
+const EpisodeItem = ({ props, onPress }: Props) => {
     return (
-        <View style={{ margin: 10 }}>
+        <Pressable style={{ margin: 10 }} onPress={() => onPress(props)}>
             <View style={styles.row}>
                 <Image style={styles.img} source={{ uri: props.poster }} />
                 <View style={styles.titleContainer}>
@@ -26,7 +21,7 @@ const EpisodeItem = ({ props }: Props) => {
                 <AntDesign name="download" size={24} color="white" />
             </View>
             <Text style={styles.plot}>{props.plot}</Text>
-        </View>
+        </Pressable>
     );
 }
 
