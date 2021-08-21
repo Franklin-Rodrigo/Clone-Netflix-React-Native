@@ -18,6 +18,8 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import HomeScreen from '../screens/HomeScreen';
+import MovieDetailsScreen from '../screens/MovieDetailsScreen';
+
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -39,6 +41,9 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="MovieDetailsScrean" component={MovieDetailsScreen} options={{ 
+        title: 'Details Movie'
+       }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -64,9 +69,9 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={MovieDetailsScreen}
         options={{
-
+          headerShown: false,
           tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
         }}
       />
@@ -74,7 +79,7 @@ function BottomTabNavigator() {
         name="Comming_Soon"
         component={TabTwoScreen}
         options={{
-
+          headerShown: false,
           tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color={color} />,
         }}
       />
@@ -82,7 +87,7 @@ function BottomTabNavigator() {
         name="Search"
         component={TabTwoScreen}
         options={{
-     
+          headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
         }}
       />
@@ -90,7 +95,7 @@ function BottomTabNavigator() {
         name="Downloads"
         component={TabTwoScreen}
         options={{
-   
+          headerShown: false,
           tabBarIcon: ({ color }) => <AntDesign name="download" size={24} color={color} />,
         }}
       />

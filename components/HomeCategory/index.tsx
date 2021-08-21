@@ -28,6 +28,7 @@ const HomeCategory = ({ category }: Props) => {
 
                 )}
                 horizontal
+                showsHorizontalScrollIndicator={false}
             />
         </>
     );

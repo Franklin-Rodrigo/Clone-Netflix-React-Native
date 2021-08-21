@@ -8,7 +8,7 @@ import HomeCategory from '../../components/HomeCategory';
 
 
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       {/**List of categories */}
